@@ -1,6 +1,6 @@
 # API REST com Spring Boot
 
-Este projeto é uma API REST desenvolvida em Java utilizando o framework Spring Boot. A API permite realizar operações CRUD (Create, Read, Update, Delete) para gerenciar informações de pessoas.
+Este projeto é uma API REST desenvolvida em Java utilizando o framework Spring Boot para o Santander Bootcamp na DIO. A API permite realizar operações CRUD (Create, Read, Update, Delete) para gerenciar informações de pessoas.
 
 ## Estrutura do Projeto
 
