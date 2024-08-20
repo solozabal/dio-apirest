@@ -1,11 +1,17 @@
+
+/**
+ * This class represents the service layer for managing Person entities.
+ * It provides methods for retrieving, saving, and deleting Person objects.
+ */
 package com.dio.apirest.service;
 
-import com.dio.apirest.model.Person;
-import com.dio.apirest.repository.PersonRepository;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import com.dio.apirest.model.Person;
+import com.dio.apirest.repository.PersonRepository;
 
 @Service
 public class PersonService {

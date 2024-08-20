@@ -1,3 +1,7 @@
+
+/**
+ * Represents a person in the system.
+ */
 package com.dio.apirest.model;
 
 import jakarta.persistence.Entity;

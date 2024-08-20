@@ -1,3 +1,8 @@
+
+/**
+ * This class is responsible for handling global exceptions in the API.
+ * It provides a centralized exception handling mechanism for all controllers.
+ */
 package com.dio.apirest.exception;
 
 import org.springframework.http.HttpStatus;
