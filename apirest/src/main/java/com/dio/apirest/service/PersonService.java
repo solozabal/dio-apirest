@@ -1,7 +1,6 @@
-
 /**
  * This class represents the service layer for managing Person entities.
- * It provides methods for retrieving, saving, and deleting Person objects.
+ * It provides methods for retrieving, creating, updating, and deleting Person objects.
  */
 package com.dio.apirest.service;
 
@@ -27,8 +26,21 @@ public class PersonService {
         return personRepository.findById(id).orElse(null);
     }
 
+    public Person create(Person person) {
+        return personRepository.save(person);
+    }
+
     public Person save(Person person) {
         return personRepository.save(person);
+    }
+
+    public Person update(Long id, Person person) {
+        if (personRepository.existsById(id)) {
+            person.setId(id);
+            return personRepository.save(person);
+        } else {
+            return null;
+        }
     }
 
     public void delete(Long id) {
