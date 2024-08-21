@@ -1,12 +1,7 @@
 
-/**
- * This class represents the controller for managing Person entities in the API.
- * It handles HTTP requests related to Person operations such as retrieving all persons,
- * retrieving a person by ID, creating a new person, updating an existing person, and deleting a person.
- * The base URL for all Person-related endpoints is "/api/person".
- */
 package com.dio.apirest.controller;
 
+import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,16 +37,19 @@ public class PersonController {
     }
 
     @PostMapping
-    public Person create(@RequestBody Person person) {
-        return personService.save(person);
+    public ResponseEntity<Person> create(@RequestBody Person person) {
+        Person savedPerson = personService.save(person);
+        return ResponseEntity
+            .created(URI.create("/api/person/" + savedPerson.getId()))
+            .body(savedPerson);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Person> update(@PathVariable Long id, @RequestBody Person person) {
-        Person existingPerson = personService.findById(id);
+        Person existingPerson = personService.update(id, person);
         if (existingPerson != null) {
-            person.setId(id);
-            return ResponseEntity.ok(personService.save(person));
+            return ResponseEntity.ok(existingPerson);
         } else {
             return ResponseEntity.notFound().build();
         }
