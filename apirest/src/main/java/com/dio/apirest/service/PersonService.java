@@ -1,7 +1,3 @@
-/**
- * This class represents the service layer for managing Person entities.
- * It provides methods for retrieving, creating, updating, and deleting Person objects.
- */
 package com.dio.apirest.service;
 
 import java.util.List;
@@ -9,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.dio.apirest.exception.EntityNotFoundException; // Importa a exceção personalizada
 import com.dio.apirest.model.Person;
 import com.dio.apirest.repository.PersonRepository;
 
@@ -34,16 +31,31 @@ public class PersonService {
         return personRepository.save(person);
     }
 
-    public Person update(Long id, Person person) {
-        if (personRepository.existsById(id)) {
-            person.setId(id);
-            return personRepository.save(person);
-        } else {
-            return null;
+    /**
+     * Updates an existing Person by its ID.
+     * Throws EntityNotFoundException if the Person with the given ID does not exist.
+     *
+     * @param id     the ID of the Person to update
+     * @param person the Person object with updated details
+     * @return the updated Person object
+     * @throws EntityNotFoundException if the Person with the given ID is not found
+     */
+    
+     public Person update(Long id, Person person) {
+        // Verifica se o ID existe no banco de dados
+        if (!personRepository.existsById(id)) {
+            throw new EntityNotFoundException("Person with id " + id + " not found.");
         }
+        // Define o ID da pessoa e salva no repositório
+        person.setId(id);
+        return personRepository.save(person);
     }
-
+ 
     public void delete(Long id) {
+        // Verifica se o ID existe antes de tentar deletar
+        if (!personRepository.existsById(id)) {
+            throw new EntityNotFoundException("Person with id " + id + " not found.");
+        }
         personRepository.deleteById(id);
     }
 }
