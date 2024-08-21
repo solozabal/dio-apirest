@@ -1,3 +1,9 @@
+/**
+ * This file contains the implementation of the PersonService class.
+ * The PersonService class is responsible for handling operations related to persons in the API.
+ * It provides methods for creating, updating, deleting, and retrieving person data.
+ * The class is located in the package com.dio.apirest.service.
+ */
 package com.dio.apirest.service;
 
 import java.util.List;

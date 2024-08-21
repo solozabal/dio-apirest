@@ -1,3 +1,9 @@
+/**
+ * This file contains the definition of the EntityNotFoundException class.
+ * The EntityNotFoundException class is used to represent an exception that occurs when an entity is not found.
+ * It is typically thrown when a requested entity cannot be found in the system.
+ * This exception is part of the com.dio.apirest.exception package.
+ */
 package com.dio.apirest.exception;
 
 import org.springframework.http.HttpStatus;
