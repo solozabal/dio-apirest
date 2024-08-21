@@ -26,7 +26,8 @@ public class PersonService {
     }
 
     public Person findById(Long id) {
-        return personRepository.findById(id).orElse(null);
+        return personRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Person with id " + id + " not found."));
     }
 
     public Person create(Person person) {
