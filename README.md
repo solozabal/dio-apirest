@@ -11,6 +11,7 @@ Este projeto é uma API RESTful desenvolvida com Spring Boot para gerenciar info
 - **Deletar Pessoa**: Remove uma pessoa do sistema.
 
 ## Diagrama UML
+
 classDiagram
     class Person {
         Long id
