@@ -10,10 +10,10 @@ import org.springframework.boot.test.context.SpringBootTest;
  * The tests in this class ensure that the Spring application context
  * is correctly initialized and that the application can start without errors.
  * 
- * @author Pedro Solozabal
  * @version 1.0
+ * @since 2022-10-01
  */
-@SpringBootTest
+@SpringBootTest(classes = ApirestApplication.class)
 class ApirestApplicationTests {
 
     /**
@@ -24,5 +24,6 @@ class ApirestApplicationTests {
      */
     @Test
     void contextLoads() {
+        // This test will pass if the application context loads successfully
     }
 }
