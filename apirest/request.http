@@ -1,7 +1,34 @@
+### Criar uma Nova Pessoa
 POST http://localhost:8082/api/person
 Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
 
 {
     "name": "Alice",
     "age": 30
 }
+
+### Verificar o Novo Recurso Criado
+GET http://localhost:8082/api/person/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+### Listar Todas as Pessoas
+GET http://localhost:8082/api/person
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+### Atualizar uma Pessoa
+PUT http://localhost:8082/api/person/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+{
+    "name": "Alice Updated",
+    "age": 31
+}
+
+### Deletar uma Pessoa
+DELETE http://localhost:8082/api/person/1
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNzd29yZA==

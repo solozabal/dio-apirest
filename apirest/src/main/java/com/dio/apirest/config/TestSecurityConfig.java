@@ -25,7 +25,7 @@ import org.springframework.security.web.SecurityFilterChain;
 public class TestSecurityConfig {
 
     /**
-     * Configures the security filter chain.
+     * Configures the security filter chain for testing.
      * 
      * <p>This method disables CSRF protection and permits all HTTP requests,
      * ensuring that security does not interfere with tests.</p>
@@ -35,7 +35,7 @@ public class TestSecurityConfig {
      * @throws Exception if an error occurs while configuring security
      */
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain testSecurityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth.anyRequest().permitAll());
         return http.build();
