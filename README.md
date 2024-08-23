@@ -12,6 +12,7 @@ Este projeto é uma API RESTful desenvolvida com Spring Boot para gerenciar info
 
 ## Diagrama UML
 
+```mermaid
 classDiagram
     class Person {
         Long id
