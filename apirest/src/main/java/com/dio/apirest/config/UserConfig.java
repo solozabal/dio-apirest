@@ -10,10 +10,10 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 /**
- * Classe de configuração para gerenciamento de usuários na aplicação.
+ * Configuration class for user management in the application.
  * 
- * Esta classe configura um serviço de detalhes do usuário em memória e um codificador de senha
- * utilizando o algoritmo BCrypt. É responsável por fornecer um usuário padrão para autenticação.
+ * This class configures an in-memory user details service and a password encoder
+ * using the BCrypt algorithm. It is responsible for providing a default user for authentication.
  * 
  * @author Pedro Solozabal
  * @version 1.0
@@ -22,34 +22,34 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 public class UserConfig {
 
     /**
-     * Cria um bean de UserDetailsService que gerencia usuários em memória.
+     * Creates a UserDetailsService bean that manages users in memory.
      * 
-     * Este método define um usuário padrão com nome de usuário "user", senha "password"
-     * (codificada com BCrypt) e a função "USER". O usuário é armazenado em um gerenciador
-     * de detalhes do usuário em memória.
+     * This method defines a default user with username "user", password "password"
+     * (encoded with BCrypt), and the role "USER". The user is stored in an in-memory
+     * user details manager.
      * 
-     * @param passwordEncoder O codificador de senha a ser utilizado para codificar a senha do usuário.
-     * @return Um objeto UserDetailsService que gerencia usuários em memória.
+     * @param passwordEncoder The password encoder to be used for encoding the user's password.
+     * @return A UserDetailsService object that manages users in memory.
      */
     @Bean
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         UserDetails user = User.withUsername("user")
-            .password(passwordEncoder.encode("password")) // Codifica a senha com BCrypt
+            .password(passwordEncoder.encode("password")) // Encodes the password with BCrypt
             .roles("USER")
             .build();
         return new InMemoryUserDetailsManager(user);
     }
 
     /**
-     * Cria um bean de PasswordEncoder utilizando o algoritmo BCrypt.
+     * Creates a PasswordEncoder bean using the BCrypt algorithm.
      * 
-     * Este método fornece um codificador de senha que pode ser utilizado para
-     * codificar senhas de forma segura.
+     * This method provides a password encoder that can be used to
+     * securely encode passwords.
      * 
-     * @return Um objeto PasswordEncoder que utiliza o algoritmo BCrypt.
+     * @return A PasswordEncoder object that uses the BCrypt algorithm.
      */
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder(); // Bean para BCryptPasswordEncoder
+        return new BCryptPasswordEncoder(); // Bean for BCryptPasswordEncoder
     }
 }

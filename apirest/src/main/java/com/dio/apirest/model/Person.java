@@ -9,10 +9,10 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 /**
- * Representa uma pessoa no sistema.
+ * Represents a person in the system.
  * 
- * Esta classe é uma entidade JPA que mapeia a tabela de pessoas no banco de dados.
- * Ela contém informações básicas sobre uma pessoa, incluindo nome e idade.
+ * This class is a JPA entity that maps to the persons table in the database.
+ * It contains basic information about a person, including name and age.
  * 
  * @author Pedro Solozabal
  * @version 1.0
@@ -32,56 +32,56 @@ public class Person {
     private Integer age;
 
     /**
-     * Obtém o identificador único da pessoa.
+     * Returns the unique identifier of the person.
      * 
-     * @return O identificador único da pessoa.
+     * @return The unique identifier of the person.
      */
     public Long getId() {
         return id;
     }
 
     /**
-     * Define o identificador único da pessoa.
+     * Sets the unique identifier of the person.
      * 
-     * @param id O identificador único a ser atribuído à pessoa.
+     * @param id The identifier to be assigned to the person.
      */
     public void setId(Long id) {
         this.id = id;
     }
 
     /**
-     * Obtém o nome da pessoa.
+     * Returns the name of the person.
      * 
-     * @return O nome da pessoa.
+     * @return The name of the person.
      */
     public String getName() {
         return name;
     }
 
     /**
-     * Define o nome da pessoa.
+     * Sets the name of the person.
      * 
-     * @param name O nome a ser atribuído à pessoa.
-     * @throws IllegalArgumentException se o nome for nulo ou vazio.
+     * @param name The name to be assigned to the person.
+     * @throws IllegalArgumentException if the name is null or empty.
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * Obtém a idade da pessoa.
+     * Returns the age of the person.
      * 
-     * @return A idade da pessoa.
+     * @return The age of the person.
      */
     public Integer getAge() {
         return age;
     }
 
     /**
-     * Define a idade da pessoa.
+     * Sets the age of the person.
      * 
-     * @param age A idade a ser atribuída à pessoa.
-     * @throws IllegalArgumentException se a idade for negativa.
+     * @param age The age to be assigned to the person.
+     * @throws IllegalArgumentException if the age is negative.
      */
     public void setAge(Integer age) {
         this.age = age;

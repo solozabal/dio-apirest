@@ -7,10 +7,10 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.web.SecurityFilterChain;
 
 /**
- * Classe de configuração de segurança para a aplicação.
+ * Security configuration class for the application.
  * 
- * Esta classe configura as regras de segurança da aplicação, incluindo
- * a proteção de rotas específicas e a configuração de autenticação básica.
+ * This class configures the security rules of the application, including
+ * the protection of specific routes and the configuration of basic authentication.
  * 
  * @author Pedro Solozabal
  * @version 1.0
@@ -20,26 +20,26 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     /**
-     * Configura o filtro de segurança da aplicação.
+     * Configures the security filter chain for the application.
      * 
-     * Este método define as regras de segurança, como a desabilitação do
-     * CSRF, a proteção de rotas específicas que requerem autenticação e
-     * a configuração do método de autenticação básica.
+     * This method defines the security rules, such as disabling CSRF,
+     * protecting specific routes that require authentication, and
+     * configuring basic authentication.
      * 
-     * @param http O objeto HttpSecurity que permite a configuração de
-     *             segurança da aplicação.
-     * @return Um objeto SecurityFilterChain configurado.
-     * @throws Exception Se ocorrer um erro durante a configuração da segurança.
+     * @param http The HttpSecurity object that allows the configuration of
+     *             the application's security.
+     * @return A configured SecurityFilterChain object.
+     * @throws Exception If an error occurs during security configuration.
      */
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable()) // Desabilita CSRF, caso necessário
-            .authorizeHttpRequests(auth -> auth // Usando authorizeHttpRequests() com Lambda DSL
-                .requestMatchers("/api/person/**").authenticated() // Protege a rota /api/person/** com autenticação
-                .anyRequest().permitAll() // Qualquer outra rota é permitida
+            .csrf(csrf -> csrf.disable()) // Disables CSRF, if necessary
+            .authorizeHttpRequests(auth -> auth // Using authorizeHttpRequests() with Lambda DSL
+                .requestMatchers("/api/person/**").authenticated() // Protects the /api/person/** route with authentication
+                .anyRequest().permitAll() // Any other route is permitted
             )
-            .httpBasic(customizer -> customizer.realmName("MyApp")); // Configuração do httpBasic com customização
+            .httpBasic(customizer -> customizer.realmName("MyApp")); // Configures httpBasic with customization
 
         return http.build();
     }

@@ -1,12 +1,17 @@
 /**
  * This file represents the integration test for the PersonService class.
- * It is located at the following file path: /c:/Users/pedro/Documents/Pedro Solozabal/DIO/dio-apirest/apirest/src/test/java/com/dio/apirest/PersonServiceIntegrationTest.java
+ * It is located at the following file path: 
+ * /c:/Users/pedro/Documents/Pedro Solozabal/DIO/dio-apirest/apirest/src/test/java/com/dio/apirest/PersonServiceIntegrationTest.java
  * 
- * The PersonServiceIntegrationTest class is responsible for testing the integration of the PersonService class with other components of the application.
- * It ensures that the PersonService class functions correctly in a real-world scenario, by testing its interactions with the database and other external dependencies.
+ * The PersonServiceIntegrationTest class is responsible for testing the integration of the 
+ * PersonService class with other components of the application. It ensures that the 
+ * PersonService class functions correctly in a real-world scenario by testing its 
+ * interactions with the database and other external dependencies.
  * 
- * This integration test class should be used to verify the overall behavior and functionality of the PersonService class, rather than testing individual methods in isolation.
- * It should cover various scenarios and edge cases to ensure the robustness and reliability of the PersonService class.
+ * This integration test class should be used to verify the overall behavior and 
+ * functionality of the PersonService class, rather than testing individual methods in 
+ * isolation. It should cover various scenarios and edge cases to ensure the robustness 
+ * and reliability of the PersonService class.
  */
 package com.dio.apirest;
 
@@ -22,6 +27,22 @@ import com.dio.apirest.model.Person;
 import com.dio.apirest.repository.PersonRepository;
 import com.dio.apirest.service.PersonService;
 
+/**
+ * Integration test class for the PersonService.
+ * 
+ * This class tests the integration of the PersonService with the PersonRepository 
+ * and verifies that the service methods work correctly with the database.
+ * 
+ * The tests include creating, finding, updating, and deleting persons, ensuring 
+ * that the service behaves as expected in a real-world scenario.
+ * 
+ * Each test method is annotated with @Test and follows the naming convention 
+ * of "test<Operation>" to clearly indicate the purpose of the test.
+ * 
+ * Author: Pedro Solozabal
+ * Version: 1.0
+ * Since: 2023-08-23
+ */
 @SpringBootTest
 public class PersonServiceIntegrationTest {
 
@@ -31,11 +52,21 @@ public class PersonServiceIntegrationTest {
     @Autowired
     private PersonRepository personRepository;
 
+    /**
+     * Sets up the test environment by deleting all persons from the repository 
+     * before each test. This ensures a clean state for each test execution.
+     */
     @BeforeEach
     public void setUp() {
         personRepository.deleteAll();
     }
 
+    /**
+     * Tests the creation of a person using the PersonService.
+     * 
+     * This test verifies that a new person can be created and that the 
+     * returned person has the expected properties.
+     */
     @Test
     public void testCreatePerson() {
         Person person = new Person();
@@ -50,6 +81,12 @@ public class PersonServiceIntegrationTest {
         assertThat(createdPerson.getAge()).isEqualTo(30);
     }
 
+    /**
+     * Tests finding a person by ID using the PersonService.
+     * 
+     * This test verifies that a person can be found by its ID and that 
+     * the returned person's properties match the expected values.
+     */
     @Test
     public void testFindPersonById() {
         Person person = new Person();
@@ -65,6 +102,12 @@ public class PersonServiceIntegrationTest {
         assertThat(foundPerson.getAge()).isEqualTo(25);
     }
 
+    /**
+     * Tests updating a person's information using the PersonService.
+     * 
+     * This test verifies that an existing person's details can be updated 
+     * and that the updated person has the expected properties.
+     */
     @Test
     public void testUpdatePerson() {
         Person person = new Person();
@@ -82,23 +125,28 @@ public class PersonServiceIntegrationTest {
         assertThat(updatedPerson.getAge()).isEqualTo(45);
     }
 
+    /**
+     * Tests deleting a person using the PersonService.
+     * 
+     * This test verifies that a person can be deleted by ID and that 
+     * attempting to find the deleted person results in an EntityNotFoundException.
+     */
     @Test
-public void testDeletePerson() {
-    // Cria e salva uma pessoa no repositório
-    Person person = new Person();
-    person.setName("Jane Smith");
-    person.setAge(35);
-    person = personRepository.save(person);
+    public void testDeletePerson() {
+        // Create and save a person in the repository
+        Person person = new Person();
+        person.setName("Jane Smith");
+        person.setAge(35);
+        person = personRepository.save(person);
 
-    final Long personId = person.getId();
-    
-    // Exclui a pessoa
-    personService.delete(personId);
+        final Long personId = person.getId();
+        
+        // Delete the person
+        personService.delete(personId);
 
-    // Verifica se a pessoa foi realmente deletada e lança a exceção ao tentar buscar
-    EntityNotFoundException exception = assertThrows(EntityNotFoundException.class, () -> personService.findById(personId));
-    assertThat(exception).isNotNull();
-    assertThat(exception.getMessage()).isEqualTo("Person with id " + personId + " not found.");
+        // Verify that the person was actually deleted and throws an exception when trying to find
+        EntityNotFoundException exception = assertThrows(EntityNotFoundException.class, () -> personService.findById(personId));
+        assertThat(exception).isNotNull();
+        assertThat(exception.getMessage()).isEqualTo("Person with id " + personId + " not found.");
     }
-
 }

@@ -20,10 +20,10 @@ import com.dio.apirest.service.PersonService;
 import jakarta.validation.Valid;
 
 /**
- * Controlador responsável por gerenciar as requisições da API relacionadas a pessoas.
+ * Controller responsible for managing API requests related to persons.
  * 
- * Este controlador fornece endpoints para criar, ler, atualizar e excluir informações
- * sobre pessoas no sistema. As operações são realizadas utilizando o serviço PersonService.
+ * This controller provides endpoints to create, read, update, and delete information
+ * about persons in the system. The operations are performed using the PersonService.
  * 
  * @author Pedro Solozabal
  * @version 1.0
@@ -36,12 +36,12 @@ public class PersonController {
     private PersonService personService;
 
     /**
-     * Obtém uma lista de todas as pessoas.
+     * Retrieves a list of all persons.
      * 
-     * Este método responde a requisições GET na rota /api/person e retorna
-     * uma lista de objetos Person.
+     * This method responds to GET requests at the /api/person endpoint and returns
+     * a list of Person objects.
      * 
-     * @return Uma lista de todas as pessoas cadastradas.
+     * @return A list of all registered persons.
      */
     @GetMapping
     public List<Person> getAll() {
@@ -49,13 +49,13 @@ public class PersonController {
     }
 
     /**
-     * Obtém uma pessoa pelo seu identificador.
+     * Retrieves a person by their identifier.
      * 
-     * Este método responde a requisições GET na rota /api/person/{id}. Se a pessoa
-     * for encontrada, retorna um objeto Person; caso contrário, retorna um status 404.
+     * This method responds to GET requests at the /api/person/{id} endpoint. If the person
+     * is found, it returns a Person object; otherwise, it returns a 404 status.
      * 
-     * @param id O identificador da pessoa a ser buscada.
-     * @return Uma ResponseEntity contendo a pessoa encontrada ou um status 404 se não for encontrada.
+     * @param id The identifier of the person to be retrieved.
+     * @return A ResponseEntity containing the found person or a 404 status if not found.
      */
     @GetMapping("/{id}")
     public ResponseEntity<Person> getById(@PathVariable Long id) {
@@ -64,13 +64,13 @@ public class PersonController {
     }
 
     /**
-     * Cria uma nova pessoa.
+     * Creates a new person.
      * 
-     * Este método responde a requisições POST na rota /api/person. Recebe um objeto Person
-     * no corpo da requisição, salva a nova pessoa e retorna a pessoa criada com um status 201.
+     * This method responds to POST requests at the /api/person endpoint. It receives a Person
+     * object in the request body, saves the new person, and returns the created person with a 201 status.
      * 
-     * @param person O objeto Person a ser criado.
-     * @return Uma ResponseEntity contendo a pessoa criada e o URI do novo recurso.
+     * @param person The Person object to be created.
+     * @return A ResponseEntity containing the created person and the URI of the new resource.
      */
     @PostMapping
     public ResponseEntity<Person> create(@Valid @RequestBody Person person) {
@@ -81,14 +81,14 @@ public class PersonController {
     }
 
     /**
-     * Atualiza uma pessoa existente.
+     * Updates an existing person.
      * 
-     * Este método responde a requisições PUT na rota /api/person/{id}. Recebe um objeto Person
-     * no corpo da requisição e atualiza a pessoa correspondente ao identificador fornecido.
+     * This method responds to PUT requests at the /api/person/{id} endpoint. It receives a Person
+     * object in the request body and updates the person corresponding to the provided identifier.
      * 
-     * @param id O identificador da pessoa a ser atualizada.
-     * @param person O objeto Person contendo os dados atualizados.
-     * @return Uma ResponseEntity contendo a pessoa atualizada ou um status 404 se não for encontrada.
+     * @param id The identifier of the person to be updated.
+     * @param person The Person object containing the updated data.
+     * @return A ResponseEntity containing the updated person or a 404 status if not found.
      */
     @PutMapping("/{id}")
     public ResponseEntity<Person> update(@PathVariable Long id, @Valid @RequestBody Person person) {
@@ -101,13 +101,13 @@ public class PersonController {
     }
 
     /**
-     * Exclui uma pessoa pelo seu identificador.
+     * Deletes a person by their identifier.
      * 
-     * Este método responde a requisições DELETE na rota /api/person/{id}. Se a pessoa
-     * for encontrada, ela é excluída e um status 204 é retornado; caso contrário, um status 404 é retornado.
+     * This method responds to DELETE requests at the /api/person/{id} endpoint. If the person
+     * is found, it is deleted and a 204 status is returned; otherwise, a 404 status is returned.
      * 
-     * @param id O identificador da pessoa a ser excluída.
-     * @return Uma ResponseEntity com status 204 se a exclusão for bem-sucedida ou um status 404 se não for encontrada.
+     * @param id The identifier of the person to be deleted.
+     * @return A ResponseEntity with a 204 status if the deletion is successful or a 404 status if not found.
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
