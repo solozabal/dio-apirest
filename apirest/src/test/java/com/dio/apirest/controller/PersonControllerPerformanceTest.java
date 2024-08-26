@@ -1,4 +1,4 @@
-package com.dio.apirest;
+package com.dio.apirest.controller;
 
 import static org.hamcrest.Matchers.lessThan;
 import org.junit.jupiter.api.BeforeAll;

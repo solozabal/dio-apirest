@@ -1,8 +1,4 @@
-/**
- * This file represents the test class for the PersonRepository class in the apirest package.
- * It contains test cases for the methods implemented in the PersonRepository class.
- */
-package com.dio.apirest;
+package com.dio.apirest.repository;
 
 import java.util.Optional;
 
@@ -13,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.dio.apirest.model.Person;
-import com.dio.apirest.repository.PersonRepository;
 
 /**
  * Test class for the PersonRepository.

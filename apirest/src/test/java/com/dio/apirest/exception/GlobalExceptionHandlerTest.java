@@ -1,4 +1,4 @@
-package com.dio.apirest;
+package com.dio.apirest.exception;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -15,8 +15,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.dio.apirest.config.TestSecurityConfig;
 import com.dio.apirest.controller.PersonController;
-import com.dio.apirest.exception.BadRequestException;
-import com.dio.apirest.exception.NotFoundException;
 import com.dio.apirest.service.PersonService;
 
 /**

@@ -1,10 +1,4 @@
-/**
- * This file is the test class for the PersonService class in the apirest package.
- * It contains test cases for the methods in the PersonService class.
- * The PersonServiceTest class is located at the following file path:
- * /c:/Users/pedro/Documents/Pedro Solozabal/DIO/dio-apirest/apirest/src/test/java/com/dio/apirest/PersonServiceTest.java
- */
-package com.dio.apirest;
+package com.dio.apirest.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -21,7 +15,6 @@ import org.mockito.MockitoAnnotations;
 import com.dio.apirest.exception.EntityNotFoundException;
 import com.dio.apirest.model.Person;
 import com.dio.apirest.repository.PersonRepository;
-import com.dio.apirest.service.PersonService;
 
 /**
  * Test class for the PersonService.

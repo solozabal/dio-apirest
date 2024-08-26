@@ -1,19 +1,4 @@
-/**
- * This file represents the integration test for the PersonService class.
- * It is located at the following file path: 
- * /c:/Users/pedro/Documents/Pedro Solozabal/DIO/dio-apirest/apirest/src/test/java/com/dio/apirest/PersonServiceIntegrationTest.java
- * 
- * The PersonServiceIntegrationTest class is responsible for testing the integration of the 
- * PersonService class with other components of the application. It ensures that the 
- * PersonService class functions correctly in a real-world scenario by testing its 
- * interactions with the database and other external dependencies.
- * 
- * This integration test class should be used to verify the overall behavior and 
- * functionality of the PersonService class, rather than testing individual methods in 
- * isolation. It should cover various scenarios and edge cases to ensure the robustness 
- * and reliability of the PersonService class.
- */
-package com.dio.apirest;
+package com.dio.apirest.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -25,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import com.dio.apirest.exception.EntityNotFoundException;
 import com.dio.apirest.model.Person;
 import com.dio.apirest.repository.PersonRepository;
-import com.dio.apirest.service.PersonService;
 
 /**
  * Integration test class for the PersonService.

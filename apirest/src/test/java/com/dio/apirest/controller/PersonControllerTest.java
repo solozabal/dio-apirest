@@ -1,8 +1,4 @@
-/**
- * This file is the test class for the PersonController class in the apirest package.
- * It contains test cases for the methods in the PersonController class.
- */
-package com.dio.apirest;
+package com.dio.apirest.controller;
 
 import java.util.Arrays;
 
@@ -26,7 +22,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.dio.apirest.controller.PersonController;
 import com.dio.apirest.model.Person;
 import com.dio.apirest.service.PersonService;
 import com.fasterxml.jackson.core.JsonProcessingException;
