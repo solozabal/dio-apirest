@@ -32,6 +32,15 @@ Este projeto é uma aplicação API REST desenvolvida com Spring Boot, simples, 
 - **.gitignore**: Arquivo que especifica quais arquivos e diretórios devem ser ignorados pelo Git.
 - **.vscode/settings.json**: Arquivo de configuração do Visual Studio Code.
 
+## Aplicação dos Conhecimentos
+- **Configuração do Projeto**: Configuração inicial do projeto Spring Boot com Maven.
+- **Modelagem de Dados**: Criação da entidade `Person` e mapeamento JPA.
+- **Desenvolvimento de API REST**: Implementação do controlador `PersonController` para gerenciar operações CRUD.
+- **Segurança**: Configuração de segurança com `UserConfig` para autenticação básica.
+- **Interface de Usuário**: Criação de uma página inicial com `index.html` e `styles.css` para interação com a API.
+- **Integração de Frontend e Backend**: Uso de Thymeleaf para renderizar dados do servidor no frontend.
+- **Execução e Testes**: Execução da aplicação e testes das funcionalidades usando H2 Database.
+
 ## Conclusão
 Este projeto é um exemplo de uma aplicação API REST construída com Spring Boot, utilizando várias bibliotecas e frameworks para fornecer funcionalidades como segurança, persistência de dados e testes. Cada arquivo tem uma responsabilidade específica, desde a configuração do projeto até a definição de regras de segurança e execução de testes.
 
