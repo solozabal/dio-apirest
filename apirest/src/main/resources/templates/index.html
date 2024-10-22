@@ -1,24 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Person Management</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
     <h1>Person Management</h1>
-    <form action="/add" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        <label for="age">Age:</label>
-        <input type="number" id="age" name="age" required>
+    <form th:action="@{/api/persons}" method="post">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="birthdate">Birthdate:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
         <button type="submit">Add Person</button>
     </form>
-    <h2>Person List</h2>
+    <h2>Existing Persons</h2>
     <ul>
         <li th:each="person : ${persons}">
-            <span th:text="${person.name}">Name</span> - <span th:text="${person.age}">Age</span>
+            <span th:text="${person.firstName} + ' ' + ${person.lastName}"></span>
+            <span th:text="${person.email}"></span>
+            <span th:text="${person.birthdate}"></span>
+            <button th:onclick="'/api/persons/' + ${person.id} + '/edit'">Edit</button>
+            <button th:onclick="'/api/persons/' + ${person.id} + '/delete'">Delete</button>
         </li>
     </ul>
 </body>
