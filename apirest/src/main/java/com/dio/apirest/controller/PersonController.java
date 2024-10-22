@@ -1,9 +1,10 @@
 package com.dio.apirest.controller;
 
 import java.net.URI;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,16 +37,17 @@ public class PersonController {
     private PersonService personService;
 
     /**
-     * Retrieves a list of all persons.
+     * Retrieves a list of all persons with pagination.
      * 
      * This method responds to GET requests at the /api/person endpoint and returns
-     * a list of Person objects.
+     * a paginated list of Person objects.
      * 
-     * @return A list of all registered persons.
+     * @param pageable the pagination information
+     * @return A paginated list of all registered persons.
      */
     @GetMapping
-    public List<Person> getAll() {
-        return personService.findAll();
+    public Page<Person> getAll(Pageable pageable) {
+        return personService.findAll(pageable);
     }
 
     /**
@@ -60,7 +62,7 @@ public class PersonController {
     @GetMapping("/{id}")
     public ResponseEntity<Person> getById(@PathVariable Long id) {
         Person person = personService.findById(id);
-        return person != null ? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
+        return ResponseEntity.ok(person);
     }
 
     /**
@@ -74,7 +76,7 @@ public class PersonController {
      */
     @PostMapping
     public ResponseEntity<Person> create(@Valid @RequestBody Person person) {
-        Person savedPerson = personService.save(person);
+        Person savedPerson = personService.create(person);
         return ResponseEntity
             .created(URI.create("/api/person/" + savedPerson.getId()))
             .body(savedPerson);
@@ -93,11 +95,7 @@ public class PersonController {
     @PutMapping("/{id}")
     public ResponseEntity<Person> update(@PathVariable Long id, @Valid @RequestBody Person person) {
         Person existingPerson = personService.update(id, person);
-        if (existingPerson != null) {
-            return ResponseEntity.ok(existingPerson);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(existingPerson);
     }
 
     /**
@@ -111,12 +109,7 @@ public class PersonController {
      */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
-        Person person = personService.findById(id);
-        if (person != null) {
-            personService.delete(id);
-            return ResponseEntity.noContent().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
+        personService.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }

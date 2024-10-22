@@ -31,6 +31,16 @@ public class Person {
     @Min(value = 0, message = "Age must be greater than or equal to 0")
     private Integer age;
 
+    // Construtor que aceita os parâmetros long, String e int
+    public Person(Long id, String name, int age) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+    }
+
+    // Construtor padrão
+    public Person() {}
+
     /**
      * Returns the unique identifier of the person.
      * 

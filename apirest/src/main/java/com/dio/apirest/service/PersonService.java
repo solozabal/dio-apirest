@@ -1,11 +1,11 @@
 package com.dio.apirest.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.dio.apirest.exception.EntityNotFoundException; // Importing the custom exception
+import com.dio.apirest.exception.EntityNotFoundException;
 import com.dio.apirest.model.Person;
 import com.dio.apirest.repository.PersonRepository;
 
@@ -15,8 +15,8 @@ import com.dio.apirest.repository.PersonRepository;
  * It provides methods for creating, updating, deleting, and retrieving person data.
  * The class is located in the package com.dio.apirest.service.
  * 
- * @author Pedro Solozabal
- * @version 1.0
+ * Author: Pedro Solozabal
+ * Version: 1.0
  */
 @Service
 public class PersonService {
@@ -25,12 +25,13 @@ public class PersonService {
     private PersonRepository personRepository;
 
     /**
-     * Retrieves all persons from the database.
+     * Retrieves all persons from the database with pagination.
      * 
-     * @return a list of all Person objects.
+     * @param pageable the pagination information
+     * @return a page of Person objects.
      */
-    public List<Person> findAll() {
-        return personRepository.findAll();
+    public Page<Person> findAll(Pageable pageable) {
+        return personRepository.findAll(pageable);
     }
 
     /**
@@ -52,16 +53,7 @@ public class PersonService {
      * @return the created Person object
      */
     public Person create(Person person) {
-        return personRepository.save(person);
-    }
-
-    /**
-     * Saves a Person object to the database.
-     * 
-     * @param person the Person object to save
-     * @return the saved Person object
-     */
-    public Person save(Person person) {
+        validatePerson(person);
         return personRepository.save(person);
     }
 
@@ -74,11 +66,10 @@ public class PersonService {
      * @throws EntityNotFoundException if the Person with the given ID is not found
      */
     public Person update(Long id, Person person) {
-        // Checks if the ID exists in the database
         if (!personRepository.existsById(id)) {
             throw new EntityNotFoundException("Person with id " + id + " not found.");
         }
-        // Sets the ID of the person and saves it in the repository
+        validatePerson(person);
         person.setId(id);
         return personRepository.save(person);
     }
@@ -90,10 +81,22 @@ public class PersonService {
      * @throws EntityNotFoundException if the Person with the given ID is not found
      */
     public void delete(Long id) {
-        // Checks if the ID exists before attempting to delete
         if (!personRepository.existsById(id)) {
             throw new EntityNotFoundException("Person with id " + id + " not found.");
         }
         personRepository.deleteById(id);
+    }
+
+    /**
+     * Validates the Person object.
+     * 
+     * @param person the Person object to validate
+     * @throws IllegalArgumentException if the Person object is invalid
+     */
+    private void validatePerson(Person person) {
+        if (person.getName() == null || person.getName().isEmpty()) {
+            throw new IllegalArgumentException("Person name cannot be null or empty.");
+        }
+        // Add more validations as needed
     }
 }
