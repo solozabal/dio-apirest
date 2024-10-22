@@ -7,7 +7,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
+        <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
@@ -18,7 +18,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>22</java.version>
+        <java.version>21</java.version>
     </properties>
 
     <dependencies>
@@ -33,8 +33,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
-            <version>6.1.12</version>
-            <scope>test</scope>
         </dependency>
 
         <!-- Spring Data JPA -->
@@ -66,7 +64,25 @@
         <dependency>
             <groupId>jakarta.validation</groupId>
             <artifactId>jakarta.validation-api</artifactId>
-            <version>3.0.0</version>
+        </dependency>
+
+        <!-- Hibernate JCache -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>5.6.14.Final</version>
+        </dependency>
+
+        <!-- Ehcache JCache Implementation -->
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+
+        <!-- Jakarta Persistence API -->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
         </dependency>
 
         <!-- Spring Boot Test Starter -->
@@ -93,7 +109,6 @@
         <dependency>
             <groupId>io.rest-assured</groupId>
             <artifactId>rest-assured</artifactId>
-            <version>5.5.0</version>
             <scope>test</scope>
         </dependency>
 
@@ -101,14 +116,12 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>6.3.2</version>
         </dependency>
 
         <!-- Spring Security Web -->
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-web</artifactId>
-            <version>6.3.2</version>
         </dependency>
 
     </dependencies>
@@ -121,4 +134,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>
