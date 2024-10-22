@@ -1,5 +1,5 @@
 ## Visão Geral do Projeto
-Este projeto é uma aplicação API REST desenvolvida com Spring Boot. Ele utiliza várias bibliotecas e frameworks para fornecer funcionalidades como segurança, persistência de dados, testes e mais. A aplicação parece ser um exemplo ou um projeto de demonstração para ilustrar como construir uma API REST com Spring Boot.
+Este projeto é uma aplicação API REST desenvolvida com Spring Boot, simples, para gerenciar pessoas.
 
 ## Conceitos Utilizados
 - **Spring Boot**: Framework que facilita a criação de aplicações Java, fornecendo configuração automática e um conjunto de boas práticas.
