@@ -16,15 +16,10 @@ Este projeto é uma aplicação API REST desenvolvida com Spring Boot, simples, 
 ### Arquivos de Configuração
 - **pom.xml**: Arquivo de configuração do Maven que define as dependências do projeto, como Spring Boot, Spring Security, Spring Data JPA, H2 Database, entre outras.
 
-### Código Fonte Principal
-- **ApirestApplication.java**: Classe principal que inicia a aplicação Spring Boot. Contém o método `main` que chama `SpringApplication.run`.
-- **SecurityConfig.java**: Classe de configuração de segurança para a aplicação. Define as regras de segurança, como desabilitar CSRF e proteger rotas específicas com autenticação básica.
-- **TestSecurityConfig.java**: Classe de configuração de segurança para testes. Desabilita a proteção CSRF e permite todas as requisições HTTP para não interferir nos testes.
-
 ### Recursos
 - **application.properties**: Arquivo de configuração da aplicação. Define propriedades como URL do banco de dados, credenciais, porta do servidor, entre outras.
 
-### Testes
+### Testes - Necessário Implementar os Testes.
 - **ApirestApplicationTests.java**: Classe de testes que verifica se o contexto da aplicação carrega corretamente. Utiliza o framework JUnit para executar os testes.
 
 ### Outros Arquivos
