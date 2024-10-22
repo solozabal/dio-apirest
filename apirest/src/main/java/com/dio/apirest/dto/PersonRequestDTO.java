@@ -1,9 +1,10 @@
 package com.dio.apirest.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.PastOrPresent;
 import java.time.LocalDate;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PastOrPresent;
 
 public class PersonRequestDTO {
     @NotBlank

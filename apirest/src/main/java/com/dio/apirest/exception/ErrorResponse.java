@@ -1,4 +1,5 @@
 package com.dio.apirest.exception;
+
 public class ErrorResponse {
     private String error;
     private String message;
