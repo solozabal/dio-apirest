@@ -31,8 +31,9 @@ public class UserConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authorize -> authorize
-            .requestMatchers("/api/**").authenticated()
+                .anyRequest().permitAll()
             )
+            .csrf(csrf -> csrf.disable())
             .httpBasic(org.springframework.security.config.Customizer.withDefaults());
         return http.build();
     }
