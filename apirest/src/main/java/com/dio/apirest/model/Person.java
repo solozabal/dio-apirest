@@ -14,6 +14,7 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,14 +26,17 @@ public class Person {
     private String lastName;
 
     @Email
+    @NotBlank
     @Column(unique = true)
     private String email;
 
     @PastOrPresent
     private LocalDate birthdate;
 
+    // Getters and Setters
+
     public Long getId() {
-    return id;
+        return id;
     }
 
     public void setId(Long id) {
@@ -63,9 +67,9 @@ public class Person {
         this.email = email;
     }
 
-public LocalDate getBirthdate() {
-    return birthdate;
-}
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
 
     public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
